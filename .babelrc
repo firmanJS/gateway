@@ -1,0 +1,4 @@
+{ 
+  "presets": ["@babel/preset-env"],
+  "plugins" : ["@babel/plugin-transform-runtime"] // for async in babel ecmascript 7
+}
