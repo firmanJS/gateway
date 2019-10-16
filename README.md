@@ -4,6 +4,7 @@
 - clone servie-barang https://github.com/firmanJS/service-barang.git 
 - clone service auth https://github.com/firmanJS/Express-Restfull-API-.git
 - create database db_api_express postgres
+- install redis https://redis.io/download
 ```
 
 ```
