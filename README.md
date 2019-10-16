@@ -8,6 +8,6 @@ run and migrate database another service after clone repository
 run npm install in gateway service
 run npm run dev
 server runing in port 2000
-run in browser localhost:2000 method post username:user password:user
-after login succesfully run in brower localhost:2000/barang with header x-token-api <token>
+run in postman localhost:2000 method post username:user password:user
+after login succesfully run in postman localhost:2000/barang with header x-token-api <token>
 ```
