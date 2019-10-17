@@ -8,9 +8,14 @@
 ```
 
 ```
+# install dependencies
 - run npm install
+
+# server runing in port 2000
 - run npm run dev
-- server runing in port 2000
+
+# test running
 - run in postman localhost:2000 method post username:user password:user
-- after login succesfully run in postman localhost:2000/barang with header x-token-api <token>
+
+- after login succesfully run in postman localhost:2000/barang with header `x-token-api <token>`
 ```
