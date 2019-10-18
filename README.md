@@ -15,18 +15,20 @@
 - run npm run dev
 
 # test running
-- run in postman localhost:2000 method post username:user password:user
+- run in postman http://localhost:2000/user/ method post username:user password:user
 
 - after login succesfully run in postman localhost:2000/barang with header `x-token-api <token>`
 ```
 
 ## Service Authentication
 ```
+#before performing this action the service must be active
 [POST] http://localhost:2000/user/
 ```
 
 ## Service Barang
 ```
+#before performing this action the service must be active
 [GET] http://localhost:2000/barang  header `x-token-api <token>`
 [GET] http://localhost:2000/barang/:id header `x-token-api <token>`
 [POST] http://localhost:2000/barang/ header `x-token-api <token>`
