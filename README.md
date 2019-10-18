@@ -20,9 +20,16 @@
 - after login succesfully run in postman localhost:2000/barang with header `x-token-api <token>`
 ```
 
+## Service Authentication
 ```
-[GET] http://localhost:2000/barang 
-[GET] http://localhost:2000/barang/:id
-[POST] http://localhost:2000/barang/
-[PATCH] http://localhost:2000/barang/:id
-[DELETE] http://localhost:2000/barang/:id
+[POST] http://localhost:2000/user/
+```
+
+## Service Barang
+```
+[GET] http://localhost:2000/barang  header `x-token-api <token>`
+[GET] http://localhost:2000/barang/:id header `x-token-api <token>`
+[POST] http://localhost:2000/barang/ header `x-token-api <token>`
+[PATCH] http://localhost:2000/barang/:id header `x-token-api <token>`
+[DELETE] http://localhost:2000/barang/:id header `x-token-api <token>`
+```
