@@ -1,31 +1,64 @@
 'use strict';
 import express from 'express';
 import axios from 'axios';
+import { HeaderJWT } from '../helper/header';
 const routeBarang = express.Router();
 
 routeBarang.get('/barang', async (req, res) => {
-  const token = req.headers['x-token-api'];
-  let configAuth = { headers: { 'x-token-api':token } };
-  const permission = {
-    'menu':'berita',
-    'access':{
-      'view':false,
-      'edit':false,
-      'save':false,
-      'delete':false,
-  }
-}
-const options = {
-  maxAge: 1000 * 60 * 180,
-  httpOnly: true, secure: req.app.get('env') === 'development' ? false : true, 
-}
-res.cookie('permission', permission,options)
+  const JwtHead = await HeaderJWT(req);
   try {
-    const response = await axios.get(process.env.URL_BARANG,configAuth);
+    const response = await axios.get(process.env.URL_BARANG,JwtHead);
     res.json(response.data);
-    console.log(req.cookies.permission.access.view);
   } catch (error) {
-    res.json(error);
+    res.status(error.response.data.status).json(error.response.data);
+  }
+});
+
+routeBarang.post('/barang', async (req, res) => {
+  try {
+    const response = await axios({
+      method: 'post',
+      url: process.env.URL_BARANG,
+      headers: { 'x-token-api':req.headers['x-token-api'] },
+      data: req.body
+    })
+    res.json(response.data);
+  } catch (error) {
+    res.status(error.response.data.status).json(error.response.data);
+  }
+});
+
+routeBarang.patch('/barang/:id', async (req, res) => {
+  try {
+    const response = await axios({
+      method: 'patch',
+      url: process.env.URL_BARANG+'/'+req.params.id,
+      headers: { 'x-token-api':req.headers['x-token-api'] },
+      data: req.body
+    })
+    res.json(response.data);
+  } catch (error) {
+    res.status(error.response.data.status).json(error.response.data);
+  }
+});
+
+routeBarang.get('/barang/:id', async (req, res) => {
+  const JwtHead = await HeaderJWT(req);
+  try {
+    const response = await axios.get(process.env.URL_BARANG+'/'+req.params.id,JwtHead);
+    res.json(response.data);
+  } catch (error) {
+    res.status(error.response.data.status).json(error.response.data);
+  }
+});
+
+routeBarang.delete('/barang/:id', async (req, res) => {
+  const JwtHead = await HeaderJWT(req);
+  try {
+    const response = await axios.delete(process.env.URL_BARANG+'/'+req.params.id,JwtHead);
+    res.json(response.data);
+  } catch (error) {
+    res.status(error.response.data.status).json(error.response.data);
   }
 });
 
