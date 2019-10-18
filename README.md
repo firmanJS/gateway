@@ -19,3 +19,10 @@
 
 - after login succesfully run in postman localhost:2000/barang with header `x-token-api <token>`
 ```
+
+```
+[GET] http://localhost:2000/barang 
+[GET] http://localhost:2000/barang/:id
+[POST] http://localhost:2000/barang/
+[PATCH] http://localhost:2000/barang/:id
+[DELETE] http://localhost:2000/barang/:id
